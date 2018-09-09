@@ -1,9 +1,21 @@
-import string
-count = lambda l1, l2: len(list(filter(lambda c: c in l2, l1)))
+strengur = input("Enter a sentence: ")
+kommur = [',','.',':',';','"',"'",'-']
+storir = 0
+litlir = 0
+tala = 0
+punktur = 0
 
-strengur = input("Sladu inn einhverja setningu: ")
+for i in strengur:
+    if i.islower():
+        litlir = litlir + 1
+    elif i.isupper():
+        storir = storir + 1
+    elif i.isdigit():
+        tala = tala + 1
+    elif i in kommur:
+        punktur = punktur + 1
 
-print ("Storir stafir: " , sum(1 for l in strengur if l.isupper()))
-print ("Litlir stafir: " , sum(1 for l in strengur if l.islower()))
-print ("Tolustafir: " , sum(1 for t in strengur if t.isdigit()))
-print ("Punktar/Kommur :" , count(strengur, string.punctuation))
+print('{:>15s}{:>5d}'.format('Upper case', storir))
+print('{:>15s}{:>5d}'.format('Lower case', litlir))
+print('{:>15s}{:>5d}'.format('Digits', tala))
+print('{:>15s}{:>5d}'.format('Punctuation', punktur))
